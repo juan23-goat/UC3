@@ -3,9 +3,10 @@ def jogo_da_forca():
     palavras = ["python", "programacao", "computador", "algoritmo", "desenvolvimento"]
     palavra_secreta = random.choice(palavras)
     letras_corretas = set()
-    tentativas = 7 
+    tentativas = 10
     erros = 0
-
+    letras_erradas = set()          
+    
     forca = [
         """\n
          _______
@@ -39,15 +40,6 @@ def jogo_da_forca():
         |/      |
         |      (_)
         |       |
-        |       |
-        |      
-        |___
-        """,
-        """\n
-         _______
-        |/      |
-        |      (_)
-        |      \|
         |       |
         |      
         |___
@@ -95,18 +87,22 @@ def jogo_da_forca():
             return
 
         letra = input("Digite uma letra: ").lower()
-
-        if letra in letras_corretas:
+        
+        if letra in letras_corretas or letra in letras_erradas:
             print("Você já tentou essa letra.")
         elif letra in palavra_secreta:
             letras_corretas.add(letra)
             print("Letra correta!")
+            tentativas += 1
         else:
+            letras_erradas.add(letra)
             tentativas -= 1
             erros += 1
-            print("Letra incorreta!")
+            print(f"Letra incorreta! Tentativas restantes: {tentativas}")
             print(forca[erros])
 
-        print(f"Tentativas restantes: {tentativas}\n")
+
 
     print(f"Game over! A palavra era: {palavra_secreta}")
+
+jogo_da_forca()
