@@ -33,6 +33,13 @@ conta.saldo = 20000
 print(conta.saldo)
 
 
-
 #atv2
 
+
+
+class Seresvivos():
+    def __int__(mamiferos,anfibios,repteis):
+        self._mamiferos = mamiferos
+        self._anfibios = anfibios
+        self._repteis = repteis
+    
